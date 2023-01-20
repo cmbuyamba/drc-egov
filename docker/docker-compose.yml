@@ -1,5 +1,5 @@
 ############################################################################
-# Copyright 2020 Anurag Yadav (anurag.yadav@newtechways.com)               #
+# Copyright 2020 Celestin Mbuyamba (celembuyamba@gmail.com)               #
 #                                                                          #
 # Licensed under the Apache License, Version 2.0 (the "License");          #
 # you may not use this file except in compliance with the License.         #
@@ -73,7 +73,6 @@ services:
     depends_on:
       - "elasticsearch"
       
-
   fluentd:
     build:
       context: ./fluentd
@@ -91,7 +90,6 @@ services:
     depends_on:
       - "elasticsearch"
     restart: unless-stopped
-
 
   jaeger-agent:
     image: jaegertracing/jaeger-agent
@@ -220,7 +218,6 @@ services:
       - postgres-data:/var/lib/postgresql/data
     command: postgres -c shared_buffers=128MB -c max_connections=50
 
-
   cassandra:
     build:
       context: ./cassandra
@@ -240,7 +237,6 @@ services:
       - cassandra-logs:/var/log/cassandra
       - cassandra-data:/var/lib/cassandra
     entrypoint: /docker-entrypoint-second.sh
-
 
   rabbitmq:
     image: rabbitmq:management
@@ -264,7 +260,6 @@ services:
     ports:
       - "6379:6379"
 
-
   eureka:
     build:
       context: ./eureka
@@ -284,7 +279,6 @@ services:
       - eureka.client.fetchRegistry=false
     volumes:
       - app-logs:/usr/local/tomcat/logs
-
 
   lb-web:
     build:
@@ -306,7 +300,6 @@ services:
     depends_on:
       - "web"
 
-
   lb-services:
     build:
       context: ./lb-services
@@ -324,7 +317,6 @@ services:
       - app-logs:/var/log/oms
     depends_on:
       - "gateway-svc"
-
 
   web:
     build:
@@ -349,14 +341,12 @@ services:
     depends_on:
       - "fluentd"
 
-
   services:
     build:
       context: ./services
       dockerfile: Dockerfile
     image: ntw/services
     container_name: services-build
-
 
   gateway-svc:
     image: ntw/services
@@ -497,7 +487,6 @@ services:
         tag: inventory-svc
     depends_on:
       - "fluentd"
-
 
   spa:
     build:

@@ -1,5 +1,5 @@
 ############################################################################
-# Copyright 2020 Anurag Yadav (anurag.yadav@newtechways.com)               #
+# Copyright 2020 Celestin Mbuyamba (celembuyamba@gmail.com)               #
 #                                                                          #
 # Licensed under the Apache License, Version 2.0 (the "License");          #
 # you may not use this file except in compliance with the License.         #
@@ -18,7 +18,7 @@
 FROM ubuntu
 
 # File Author / Maintainer
-MAINTAINER Anurag Yadav
+LABEL Celestin Mbuyamba
 
 # Install utility tools
 RUN apt-get update && \
